@@ -1,0 +1,8 @@
+{
+"name": "discordBot",
+"version": "1.0.0",
+"description": "discord bot",
+"main": "index.js",
+"author": "FC",
+"dependencies": {}
+}
