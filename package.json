@@ -1,8 +1,11 @@
 {
-"name": "discordBot",
-"version": "1.0.0",
-"description": "discord bot",
-"main": "index.js",
-"author": "FC",
-"dependencies": {}
+  "name": "discordBot",
+  "version": "1.0.0",
+  "description": "discord bot",
+  "main": "index.js",
+  "author": "FC",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "ffmpeg-binaries": "^4.0.0"
+  }
 }
