@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "description": "discord bot",
   "main": "index.js",
+  "engines": {
+	"node": "10.15.3",
+	"npm": "6.9.0"
+  },
   "scripts": {
     "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freddychan/discordBot.git"
   },
   "author": "FC",
   "dependencies": {
