@@ -1,6 +1,8 @@
 const Discord = module.require("discord.js");
 const ytdl = require("ytdl-core");
-const opus = require("opusscript");
+const opus = require("opusscript");				// Seems Heroku cannot send appropriate voice packets to Discord (https://stackoverflow.com/questions/49806427/heroku-deployment-libopus-not-found)
+												// Even with buildpack installed, workaround not working.
+												// Audio works locally.
 
 // Calls bot to join voice channel and begin playing audio from youtube link
 module.exports.run = async (message) => {
