@@ -2,8 +2,6 @@ const Discord = module.require("discord.js");
 const ytdl = require("ytdl-core");
 
 module.exports = {
-	name: "play",
-	
 	async playAudio(message) {
 		const args = message.content.split(/\s+/g);
 		const voiceChannel = message.member.voiceChannel;
@@ -47,4 +45,8 @@ module.exports = {
 		}
 	}
 		
+}
+
+module.exports.help = {
+	name: "play"
 }
