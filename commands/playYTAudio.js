@@ -1,5 +1,6 @@
 const Discord = module.require("discord.js");
 const ytdl = require("ytdl-core");
+const opus = require("opusscript");
 
 // Calls bot to join voice channel and begin playing audio from youtube link
 module.exports.run = async (message) => {
