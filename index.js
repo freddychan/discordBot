@@ -26,6 +26,7 @@ fs.readdir("./commands/", (err, files) => {
 
 bot.once("ready", () => {
 	console.log("Ready!");
+	bot.user.setActivity('https://git.io/deux-botto', {type: 'WATCHING'});
 });
 
 bot.on("message", message => {
@@ -40,4 +41,4 @@ bot.on("message", message => {
 });
 
 
-bot.login(config.token);
+bot.login(process.env.TOKEN);
