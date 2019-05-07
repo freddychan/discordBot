@@ -1,7 +1,3 @@
-import "./commands/joinChannel.js";
-import "./commands/leaveChannel.js";
-import "./commands/rollSixSidedDie.js";
-
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 //const config = require("./config.json");
