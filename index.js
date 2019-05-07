@@ -7,6 +7,7 @@ const prefix = process.env.prefix;
 
 bot.commands = new Discord.Collection();
 
+// Reads all command files found in commands directory
 fs.readdir("./commands/", (err, files) => {
 	if (err) console.error(err);
 	
@@ -23,6 +24,14 @@ fs.readdir("./commands/", (err, files) => {
 		bot.commands.set(props.help.name, props);
 	});
 });
+
+// Connects to Heroku Postgres database
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
 
 bot.once("ready", () => {
 	console.log("Ready!");
