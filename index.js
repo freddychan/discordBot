@@ -2,15 +2,12 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 //const config = require("./config.json");		// For running local
 const fs = require("fs");
-const { Client } = require('pg');
-//const ytdl = require("ytdl-core");
+const { Client } = require('pg');;
 
 const prefix = process.env.prefix;
 //const prefix = config.prefix;					// For running local
 
 bot.commands = new Discord.Collection();
-
-const queue = new Map();
 
 // Reads all command files found in commands directory
 fs.readdir("./commands/", (err, files) => {
@@ -31,12 +28,17 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 // Connects to Heroku Postgres database
-const client = new Client({
+const dbclient = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
 
-if (client.connect()) console.log("Connected to database successfully!");
+try {
+	if (dbclient.connect()) console.log("Connected to database successfully!");
+}
+catch (error) {
+	console.log(error);
+};
 
 bot.once("ready", () => {
 	console.log("Ready!");
@@ -45,12 +47,17 @@ bot.once("ready", () => {
 bot.on("message", message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	
-	let args = message.content.split(/\s+/g);
-	let cmd = args[1].toLowerCase();
+	const args = message.content.split(/\s+/g);
+	const cmd = args[1].toLowerCase();
 	
 	let command = bot.commands.get(cmd);
-	if (command) command.run(bot, message, args);
-
+	try {
+		command.run(message);
+	}
+	catch (error) {
+		console.log(error);
+		message.reply("Error running that command!");
+	}
 });
 
 

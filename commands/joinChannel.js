@@ -1,12 +1,13 @@
 const Discord = module.require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+// Joins voice channel of message author
+module.exports.run = async (message) => {
 	if (message.member.voiceChannel) {
 		if (!message.guild.voiceConnection) {
 			const channel = message.member.voiceChannel;
 			channel.join()
 				.then(connection => {
-					message.reply("Successfully Joined!");
+					message.channel.send("Successfully Joined!");
 			})
 		}
 	}
@@ -15,6 +16,7 @@ module.exports.run = async (bot, message, args) => {
 	}
 }
 
+// Call command with !db join
 module.exports.help = {
 	name: "join"
 }

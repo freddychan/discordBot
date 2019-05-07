@@ -1,15 +1,17 @@
 const Discord = module.require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+// Leaves voice channel of message author
+module.exports.run = async (message) => {
 	if (message.guild.voiceConnection) {
-		message.reply("Buh-Bye!");
+		message.channel.send("Buh-Bye!");
 		message.guild.voiceConnection.disconnect();
 	}
 	else {
-		message.reply("I am not in a voice channel!");
+		message.channel.send("I am not in a voice channel!");
 	}
 }
 
+// Call command with !db leave
 module.exports.help = {
 	name: "leave"
 }
