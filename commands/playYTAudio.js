@@ -1,7 +1,8 @@
 const Discord = module.require("discord.js");
 const ytdl = require("ytdl-core");
 
-module.exports.run = async (message) => {
+module.exports.run = async (bot, message, args) => {
+	console.log("in play cmd");
 	const args = message.content.split(/\s+/g);
 	const voiceChannel = message.member.voiceChannel;
 	const queue = message.client.queue;
