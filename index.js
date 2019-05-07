@@ -7,7 +7,7 @@ const prefix = process.env.prefix;
 
 bot.commands = new Discord.Collection();
 
-fs.readdir("./commands/", (err, files) => {
+/*fs.readdir("./commands/", (err, files) => {
 	if (err) console.error(err);
 	
 	let jsfiles = files.filter(f => f.split(".").pop() === "js");
@@ -22,7 +22,7 @@ fs.readdir("./commands/", (err, files) => {
 		console.log(`${i+1}: ${f} loaded!`);
 		bot.commands.set(props.help.name, props);
 	});
-});
+});*/
 
 bot.once("ready", () => {
 	console.log("Ready!");
