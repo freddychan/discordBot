@@ -7,7 +7,7 @@ const prefix = process.env.prefix;
 
 bot.commands = new Discord.Collection();
 
-/*fs.readdir("./commands/", (err, files) => {
+fs.readdir("./commands/", (err, files) => {
 	if (err) console.error(err);
 	
 	let jsfiles = files.filter(f => f.split(".").pop() === "js");
@@ -18,11 +18,11 @@ bot.commands = new Discord.Collection();
 	console.log(`Loading ${jsfiles.length} commands!`);
 	
 	jsfiles.forEach((f, i) => {
-		let props = require(`../discordBot/commands/${f}`);
+		let props = require(`./commands/${f}`);
 		console.log(`${i+1}: ${f} loaded!`);
 		bot.commands.set(props.help.name, props);
 	});
-});*/
+});
 
 bot.once("ready", () => {
 	console.log("Ready!");
