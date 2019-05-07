@@ -1,9 +1,9 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const config = require("./config.json");
+//const config = require("./config.json");
 const fs = require("fs");
 
-const prefix = config.prefix;
+const prefix = process.env.prefix;
 
 bot.commands = new Discord.Collection();
 
@@ -41,4 +41,4 @@ bot.on("message", message => {
 });
 
 
-bot.login(process.env.TOKEN);
+bot.login(process.env.token);
