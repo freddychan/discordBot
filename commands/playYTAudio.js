@@ -3,14 +3,14 @@ const ytdl = require("ytdl-core");
 
 module.exports.run = async (bot, message, args) => {
 	console.log("in play cmd");
-	const args = message.content.split(/\s+/g);
+	const playargs = message.content.split(/\s+/g);
 	const voiceChannel = message.member.voiceChannel;
 	const queue = message.client.queue;
 	const serverQueue = message.client.queue.get(message.guild.id);
 		
 	if (!voiceChannel) return message.reply("I must be in a voice channel.");
 		
-	const audioInfo = await ytdl.getInfo(args[1]);
+	const audioInfo = await ytdl.getInfo(playargs[1]);
 	const song = {
 		title: audioInfo.title,
 		url: audioInfo.video_url,
