@@ -1,11 +1,16 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-//const config = require("./config.json");
+//const config = require("./config.json");		// For running local
 const fs = require("fs");
+const { Client } = require('pg');
+//const ytdl = require("ytdl-core");
 
 const prefix = process.env.prefix;
+//const prefix = config.prefix;					// For running local
 
 bot.commands = new Discord.Collection();
+
+const queue = new Map();
 
 // Reads all command files found in commands directory
 fs.readdir("./commands/", (err, files) => {
@@ -31,7 +36,7 @@ const client = new Client({
   ssl: true,
 });
 
-client.connect();
+if (client.connect()) console.log("Connected to database successfully!");
 
 bot.once("ready", () => {
 	console.log("Ready!");
@@ -50,3 +55,4 @@ bot.on("message", message => {
 
 
 bot.login(process.env.token);
+//bot.login(config.token);						// For running local
